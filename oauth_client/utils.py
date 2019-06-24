@@ -32,14 +32,17 @@ def handle_oauth_response(request, res):
 
     if not res.ok:
         messages.add_message(
-            request, messages.ERROR,
-            "Erreur d\'authentification: " + data['error'])
+            request,
+            messages.ERROR,
+            "Erreur d\'authentification: " + data['error'],
+        )
         logout(request)
         return False
 
     user, created = get_user_model().objects.get_or_create(
         pk=data['user']['pk'],
-        defaults={field: data['user'][field] for field in USER_SYNC_KEYS})
+        defaults={field: data['user'][field] for field in USER_SYNC_KEYS},
+    )
 
     if not created:
         update_user(user, data)

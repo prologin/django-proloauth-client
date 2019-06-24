@@ -12,10 +12,13 @@ class AutoLogin(RedirectView):
         self.request.session['oauth_state'] = gen_auth_state()
         return '{}/authorize?{}'.format(
             settings.OAUTH_ENDPOINT,
-            urlencode({
-                'client_id': settings.OAUTH_CLIENT_ID,
-                'state': self.request.session['oauth_state']
-            }))
+            urlencode(
+                {
+                    'client_id': settings.OAUTH_CLIENT_ID,
+                    'state': self.request.session['oauth_state'],
+                }
+            ),
+        )
 
 
 class Callback(RedirectView):
@@ -23,8 +26,10 @@ class Callback(RedirectView):
         return settings.LOGIN_REDIRECT_URL
 
     def get(self, request, *args, **kwargs):
-        if (('oauth_state' not in request.session
-             or request.GET['state'] != request.session['oauth_state'])):
+        if (
+            'oauth_state' not in request.session
+            or request.GET['state'] != request.session['oauth_state']
+        ):
             return super().get(request, *args, **kwargs)
 
         res = requests.post(
@@ -32,7 +37,8 @@ class Callback(RedirectView):
             json={
                 'code': request.GET['code'],
                 'client_id': settings.OAUTH_CLIENT_ID,
-                'client_secret': settings.OAUTH_SECRET
-            })
+                'client_secret': settings.OAUTH_SECRET,
+            },
+        )
         handle_oauth_response(request, res)
         return super().get(request, *args, **kwargs)

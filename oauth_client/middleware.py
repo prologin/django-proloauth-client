@@ -24,9 +24,12 @@ class RefreshTokenMiddleware(MiddlewareMixin):
         try:
             res = requests.post(
                 '{}/refresh'.format(settings.OAUTH_ENDPOINT),
-                json={'refresh_token': token_infos.token,
-                      'client_id': settings.OAUTH_CLIENT_ID,
-                      'client_secret': settings.OAUTH_SECRET})
+                json={
+                    'refresh_token': token_infos.token,
+                    'client_id': settings.OAUTH_CLIENT_ID,
+                    'client_secret': settings.OAUTH_SECRET,
+                },
+            )
         except:
             return HttpResponseRedirect(reverse('oauth:autologin'))
 

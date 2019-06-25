@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
 
-from oauth_client import models
+from proloauth_client import models
 
 
 # List of user attributes that are updated from the oauth endpoint
@@ -30,7 +30,7 @@ def update_user(user, data):
     user.save()
 
 
-def handle_oauth_response(request, res):
+def handle_proloauth_response(request, res):
     data = res.json()
 
     if not res.ok:

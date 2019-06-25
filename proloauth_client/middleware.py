@@ -9,8 +9,8 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.utils.deprecation import MiddlewareMixin
 
-from oauth_client import models
-from oauth_client.utils import handle_oauth_response
+from proloauth_client import models
+from proloauth_client.utils import handle_proloauth_response
 
 
 class RefreshTokenMiddleware(MiddlewareMixin):
@@ -34,7 +34,7 @@ class RefreshTokenMiddleware(MiddlewareMixin):
                 },
             )
         except:
-            return HttpResponseRedirect(reverse('oauth:autologin'))
+            return HttpResponseRedirect(reverse('proloauth:autologin'))
 
-        if not handle_oauth_response(request, res):
-            return HttpResponseRedirect(reverse('oauth:autologin'))
+        if not handle_proloauth_response(request, res):
+            return HttpResponseRedirect(reverse('proloauth:autologin'))

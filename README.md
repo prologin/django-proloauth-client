@@ -18,7 +18,7 @@ Installation
 ```bash
 # Add the dependancy to requirements.txt
 ( echo "# Prologin's Django OAuth" ;
-  echo "git+https://github.com/prologin/django-oauth" ) >> requirements.txt
+  echo "git+https://github.com/prologin/django-proloauth" ) >> requirements.txt
 
 # Update your dependancies, preferably in a virtual env
 pip install -U -r requirements.txt
@@ -30,14 +30,14 @@ Usage
 
 #### Setup
 
-First, add **django_oauth** to `INSTALLED_APPS`:
+First, add **django_proloauth** to `INSTALLED_APPS`:
 
 ```python3
 # settings.py
 
 INSTALLED_APPS = (
     ...
-    'django_oauth',
+    'django_proloauth',
 )
 ```
 
@@ -55,9 +55,9 @@ Django's CSRF middleware, it is important that it gets to loaded after:
 
 MIDDLEWARE = (
     ...
-    'oauth_client.middleware.RefreshTokenMiddleware',
+    'proloauth_client.middleware.RefreshTokenMiddleware',
 
-    # Needs to be loaded after oauth_client
+    # Needs to be loaded after proloauth_client
     'django.middleware.csrf.CsrfViewMiddleware',
 )
 ```
@@ -71,17 +71,18 @@ urlpatterns = [
     ...
 
     # OAuth client
-    path('user/auth/', include('oauth_client.urls', namespace='oauth_client')),
+    path('user/auth/',
+         include('proloauth_client.urls', namespace='proloauth_client')),
 ]
 ```
 
 #### Connections
 
 Once you completed the above setup, connecting through a Prologin account
-should be as simple as following the url `oauth_client:autologin`:
+should be as simple as following the url `proloauth_client:autologin`:
 
 ```html
-<a href="{% url 'oauth_client:autologin' %}">
+<a href="{% url 'proloauth_client:autologin' %}">
     Sign in with my Prologin account
 </a>
 ```

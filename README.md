@@ -1,5 +1,5 @@
-Django OAuth
-============
+Django ProlOAuth
+================
 
 Implementation of a minimalist OAuth client to login with a
 [Prologin](https://github.com/prologin/site) account.

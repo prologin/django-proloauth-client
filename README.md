@@ -108,3 +108,10 @@ AUTH_TOKEN_CLIENTS = {
     'myapp': AuthTokenClient('SECRET', '//mywebsite.net/user/auth/callback'),
 }
 ```
+
+
+Protocol specifications
+-----------------------
+
+The protocol is detailed in the
+[provider's sources](https://github.com/prologin/site/blob/master/prologin/users/auth_token_views.py).

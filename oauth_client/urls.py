@@ -1,3 +1,6 @@
+# Copyright (C) <2019> Association Prologin <association@prologin.org>
+# SPDX-License-Identifier: GPL-3.0+
+
 from django.urls import path
 
 from oauth_client import views

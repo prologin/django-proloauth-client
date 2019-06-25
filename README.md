@@ -16,12 +16,7 @@ Installation
 ------------
 
 ```bash
-# Add the dependancy to requirements.txt
-( echo "# Prologin's Django OAuth" ;
-  echo "git+https://github.com/prologin/django-proloauth" ) >> requirements.txt
-
-# Update your dependancies, preferably in a virtual env
-pip install -U -r requirements.txt
+pip install "git+https://github.com/prologin/django-proloauth"
 ```
 
 

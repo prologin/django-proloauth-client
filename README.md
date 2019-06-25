@@ -91,18 +91,20 @@ Deployment of your application
 ------------------------------
 
 In order to allow connections to the main website, you need to specify the urls
-of both API endpoints and setup a shared secret, for example the settings for
-the website of Girls Can Code! must be as follows:
+of both API endpoints and setup a shared secret, for example the production
+settings for should be as follows:
 
-settings/prod.py on Prologin's website:
 ```python3
-AUTH_TOKEN_CLIENTS = {
-    'gcc': AuthTokenClient('SECRET', '//gcc.prologin.org/user/auth/callback'),
-}
-```
+# settings.py on your app
 
-settings/prod.py on the GCC! website:
-```python3
 OAUTH_ENDPOINT = 'https://prologin.org/user/auth'
 OAUTH_SECRET = 'SECRET'
+```
+
+```python3
+# settings/prod.py on Prologin's website
+
+AUTH_TOKEN_CLIENTS = {
+    'myapp': AuthTokenClient('SECRET', '//mywebsite.net/user/auth/callback'),
+}
 ```

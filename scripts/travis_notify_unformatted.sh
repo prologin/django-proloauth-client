@@ -1,3 +1,7 @@
+#!/bin/bash
+# Copyright (C) <2019> Association Prologin <association@prologin.org>
+# SPDX-License-Identifier: GPL-3.0+
+
 COMMENT=$(sed ':a;N;$!ba;s/\n/\\\\n/g' <<EOF
 Your branch contains non-formatted code.
 

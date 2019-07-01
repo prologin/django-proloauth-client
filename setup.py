@@ -12,4 +12,5 @@ setup(
     author='Rémi Dupré',
     author_email='info@prologin.org',
     description='An minimalist OAuth client for django applications.',
+    install_requires=['django>2', 'requests'],
 )

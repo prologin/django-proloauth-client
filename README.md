@@ -1,6 +1,10 @@
 Django ProlOAuth
 ================
 
+[![Build Status](https://travis-ci.com/prologin/django-proloauth.svg?branch=master)](https://travis-ci.com/prologin/django-proloauth)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
+
 Implementation of a minimalist OAuth client to login with a
 [Prologin](https://github.com/prologin/site) account.
 
@@ -8,8 +12,7 @@ Implementation of a minimalist OAuth client to login with a
 Requirements
 ------------
 
-The library aims at beeing compatible with `python>=2.7` and django 2.
-Specific requirements are listed in requirements.txt.
+The library aims at being compatible with `python>=2.7` and django 2.
 
 
 Installation
@@ -111,3 +114,19 @@ Protocol specifications
 
 The protocol is detailed in the
 [provider's sources](https://github.com/prologin/site/blob/master/prologin/users/auth_token_views.py).
+
+
+Contributing
+------------
+
+#### Formatting
+
+All of the python codebase needs to be formatted using [black](https://github.com/python/black)
+by running `black .` at the root of the project before any commit.
+
+You can automate the process by installing the recommended pre-commit hooks:
+
+```bash
+pip install -r requirements-dev.txt
+pre-commit install
+```

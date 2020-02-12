@@ -35,7 +35,7 @@ First, add **django_proloauth** to `INSTALLED_APPS`:
 
 INSTALLED_APPS = (
     ...
-    'django_proloauth',
+    'proloauth_client',
 )
 ```
 
@@ -98,6 +98,7 @@ settings for should be as follows:
 
 OAUTH_ENDPOINT = 'https://prologin.org/user/auth'
 OAUTH_SECRET = 'SECRET'
+OAUTH_CLIENT_ID = 'my_client_id'
 ```
 
 ```python3

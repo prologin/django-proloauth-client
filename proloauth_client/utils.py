@@ -10,7 +10,14 @@ from proloauth_client import models
 
 
 # List of user attributes that are updated from the oauth endpoint
-USER_SYNC_KEYS = ['username', 'is_superuser', 'is_staff', 'email']
+USER_SYNC_KEYS = [
+    'username',
+    'is_staff',
+    'is_superuser',
+    'first_name',
+    'last_name',
+    'email',
+]
 
 
 def gen_auth_state():
@@ -25,7 +32,8 @@ def refresh_token(request, user, data):
 
 def update_user(user, data):
     for key in USER_SYNC_KEYS:
-        setattr(user, key, data['user'][key])
+        if getattr(user, key) in (None, ''):
+            setattr(user, key, data['user'][key])
 
     user.save()
 

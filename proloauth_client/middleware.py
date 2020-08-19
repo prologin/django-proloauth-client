@@ -34,7 +34,7 @@ class RefreshTokenMiddleware(MiddlewareMixin):
                 },
             )
         except:
-            return HttpResponseRedirect(reverse('proloauth:autologin'))
+            return HttpResponseRedirect(reverse('proloauth_client:autologin'))
 
         if not handle_proloauth_response(request, res):
-            return HttpResponseRedirect(reverse('proloauth:autologin'))
+            return HttpResponseRedirect(reverse('proloauth_client:autologin'))
